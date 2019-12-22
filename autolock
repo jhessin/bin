@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xidlehook \
+  --timer 60 \
+  'dimall' \
+  'undimall' \
+  --timer 10 \
+  'undimall; blacklock' \
+  '' &

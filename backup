@@ -1,0 +1,31 @@
+#!/bin/bash
+
+function traverse() {
+  for dir in $1/*
+  do
+    if [ -d "${dir}" ] ; then
+      echo "Backing up $dir"
+      cd "$dir"
+      gpush
+    fi
+  done
+}
+
+cd ~
+echo "Backing up ~"
+gpush
+
+cd ~/.config
+echo "Backing up .config"
+gpush
+
+cd ~/.local/bin
+echo "Backing up .local/bin"
+gpush
+
+echo "Backing up Github repos"
+traverse ~/Documents/github
+
+echo "Backing up Bitbucket repos"
+traverse ~/Documents/bitbucket
+

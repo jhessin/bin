@@ -1,0 +1,30 @@
+#!/bin/bash
+
+function traverse() {
+  for dir in $1/*
+  do
+    if [ -d "${dir}" ] ; then
+      echo "updating $dir"
+      cd "$dir"
+      gpull
+    fi
+  done
+}
+
+cd ~
+echo "restoring ~"
+gpull
+
+cd ~/.config
+echo "restoring ~/.config"
+gpull
+
+cd ~/.local/bin
+echo "restoring ~/.local/bin"
+gpull
+
+echo "restoring Github repos"
+traverse ~/Documents/github
+
+echo "restoring Bitbucket repos"
+traverse ~/Documents/bitbucket

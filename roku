@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+if [ -x $HOME/.local/bin/roku-remote-tool-linux64.AppImage ]; then
+  roku-remote-tool-linux64.AppImage &
+else
+  installroku
+  roku-remote-tool-linux64.AppImage &
+fi
