@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+usage () {
+  echo "USAGE: $0 <Shortcut_to_delete>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+mv ~/.aliases ~/.aliases.tmp
+sed -e "/ $1=/d" \
+  -e "/ push$1=/d" ~/.aliases.tmp > ~/.aliases
+rm ~/.aliases.tmp

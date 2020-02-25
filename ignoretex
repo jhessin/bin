@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cat <<EOF >.gitignore
+*.aux
+*.dvi
+*.log
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.nav
+*.out
+*.snm
+*.toc
+EOF

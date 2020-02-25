@@ -1,0 +1,12 @@
+#!/bin/sh
+rm -f *.aux
+rm -f *.dvi
+rm -f *.log
+rm -f *.fdb_latexmk
+rm -f *.fls
+rm -f *.log
+rm -f *.synctex.gz
+rm -f *.nav
+rm -f *.out
+rm -f *.snm
+rm -f *.toc

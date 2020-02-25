@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pluckeye_delay=$(pluck export | awk '/^Delay/ { print $2 }')
+pluck set "delay 0"
+sleep $pluckeye_delay
+pluck set "level 2"
+pluck set "delay $pluckeye_delay"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+usage () {
+  echo "$0 <bitbucket_user_name> <repo_name>"
+  exit 1
+}
+
+if [[ -z $1 ]] || [[ -z $2 ]]; then
+  usage
+fi
+
+git clone git@bitbucket.org:$1/$2.git ~/Documents/bitbucket/$2

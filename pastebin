@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$OSTYPE" == "linux"* ]]; then
+  $1 2>&1 | ix | tee >(xclip -sel clip)
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  $1 2>&1 | ix | tee >(pbcopy)
+fi

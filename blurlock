@@ -1,0 +1,20 @@
+#!/bin/bash
+# /usr/bin/blurlock
+
+# create temp directory if necessary
+mkdir -p ~/.local/tmp
+
+# take screenshot
+import -window root ~/.local/tmp/screenshot.png
+
+# blur it
+convert ~/.local/tmp/screenshot.png -blur 0x5 ~/.local/tmp/screenshotblur.png
+rm ~/.local/tmp/screenshot.png
+
+# lock the screen
+i3lock -i ~/.local/tmp/screenshotblur.png
+
+# sleep 1 adds a small delay to prevent possible race conditions with suspend
+sleep 1
+
+exit 0

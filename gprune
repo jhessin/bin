@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git checkout --orphan tmp
+git add -A
+git commit -m "Rebased"
+git branch -D master
+git branch -m master
+git push -f origin master
+git gc --aggressive --prune=all
+git push -uf origin master

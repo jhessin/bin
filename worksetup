@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd ~
+echo "seting up work remote ~"
+git remote add pioneeresd https://github.com/pioneeresd/dotfiles
+pullwork
+
+cd ~/.config
+echo "restoring ~/.config"
+git remote add pioneeresd https://github.com/pioneeresd/.config
+pullwork
+
+cd ~/.local/bin
+echo "restoring ~/.local/bin"
+git remote add pioneeresd https://github.com/pioneeresd/bin
+pullwork

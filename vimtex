@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "USAGE: $0 <tex_directory_to_edit>"
+  exit 1
+}
+
+[[ -z $1 ]] && usage
+if [[ -e "$1/$1.tex" ]]; then
+  nvim $1/$1.tex
+else
+  mkdir $1
+  cd $1
+  ignoretex
+  nvim $1.tex
+fi
+

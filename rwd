@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: false
+
+# first get the current working directory and chop the ending terminator.
+full_path = `echo $PWD`
+# full_path.gsub! /\n|\r/
+full_path = full_path.strip
+# puts full_path
+
+# then get the home path and cut the ending terminators
+home = `echo $HOME`
+# home.gsub! /\n|\r/
+home = home.strip
+# puts home
+
+puts full_path.gsub(home, '~')

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# xidlehook \
+#   --timer 60 \
+#   'dimall' \
+#   'undimall' \
+#   --timer 10 \
+#   'undimall; blacklock' \
+#   '' &
+xautolock -detectsleep\
+  -time 3 \
+  -locker "blacklock" \
+  -notify 30 \
+  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30
+  seconds'" \
+  -corners ---- &

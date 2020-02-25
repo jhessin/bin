@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "$(hostname)" = "roadside-pc" ]]; then
+  echo starting roadside alternate
+  tmux new-session -s synergy 'synergys -f -c ~/.synergy.roadside.conf'
+else
+  tmux new-session -s synergy 'synergys -f'
+fi

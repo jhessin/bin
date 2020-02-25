@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage () {
+  echo "$0: creates a new rails project in ~/Documents/github/"
+  echo "$0 <project_name>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+cd ~/Documents/github
+rails new $1 --database=postgresql
+cd $1
+git init
+bundle config set without 'production'
+git add -A
+git commit -m "Initial Commit"
+hub create
+git push -u origin master
+heroku create $1
+heroku git:remote -a $1

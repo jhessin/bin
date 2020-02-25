@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+TEMP="$(mktemp -d)"
+cd $TEMP
+wget https://devtools.web.roku.com/RokuRemote/app/roku-remote-tool-linux64.zip
+unzip roku-remote-tool-linux64.zip
+mv roku-remote-tool-linux64.AppImage $HOME/.local/bin
+cd ~
+rm -rf $TEMP

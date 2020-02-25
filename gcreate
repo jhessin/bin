@@ -1,0 +1,24 @@
+#!/bin/bash
+
+usage () {
+  echo "$0 <new_repo_name>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+cd ~/Documents/github
+mkdir $1
+cd $1
+git init
+echo "
+# This is my $1 project
+
+This is simply a placeholder readme file
+" > README.md
+git add -A
+git commit -m "Initial README"
+hub create
+git push -u origin master

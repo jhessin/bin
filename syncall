@@ -1,0 +1,32 @@
+#!/bin/bash
+
+function traverse() {
+  for dir in $1/*
+  do
+    if [ -d "${dir}" ] ; then
+      echo "updating $dir"
+      cd "$dir"
+      gsync 2> /dev/null
+    fi
+  done
+}
+
+cd ~/.local/bin
+echo "syncing ~/.local/bin"
+gsync 2> /dev/null
+
+cd ~
+echo "syncing ~"
+gsync 2> /dev/null
+
+cd ~/.config
+echo "syncing ~/.config"
+gsync 2> /dev/null
+
+echo "syncing Github repos"
+traverse ~/Documents/github
+
+echo "syncing Bitbucket repos"
+traverse ~/Documents/bitbucket
+
+cleanundo

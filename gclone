@@ -1,0 +1,13 @@
+#!/bin/bash
+
+usage () {
+  echo "$0: creates a new github project in ~/Documents/github/"
+  echo "$0 <project_name>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+git clone --depth 1 git@github.com:$USER/$1.git ~/Documents/github/$1

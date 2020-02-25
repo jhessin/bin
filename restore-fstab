@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo cp $HOME/.local/bin/configs/fstab /etc/fstab

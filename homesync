@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ~
+echo "restoring ~"
+pullhome
+
+cd ~/.config
+echo "restoring ~/.config"
+pullhome
+
+cd ~/.local/bin
+echo "restoring ~/.local/bin"
+pullhome

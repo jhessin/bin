@@ -1,0 +1,26 @@
+#!/bin/bash
+
+usage () {
+  echo "$0: merge an existing github repo into the current directory"
+  echo "$0 <repo_name>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+# old system
+rm -rf .git
+git init
+git remote add origin git@github.com:$USER/$1
+git fetch
+git reset origin/master
+git reset --hard
+git push -u origin master
+
+# new system
+# rm -rf .git
+# git clone --bare git@github.com:$USER/$1 .git
+# git config --bool core.bare false
+# git reset --hard

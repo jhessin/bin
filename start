@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ -z $2 ]]; then
+  tmux new-session -s $1 $1
+else
+  tmux new-session -s $1 $2
+fi

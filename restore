@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd ~
+git pull
+
+cd ~/.config
+git pull
+
+cd ~/.local/bin
+git pull

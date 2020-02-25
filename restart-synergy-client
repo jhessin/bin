@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+stop-synergy
+start-synergy-client

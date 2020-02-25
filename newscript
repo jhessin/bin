@@ -1,0 +1,17 @@
+#!/bin/bash
+
+usage () {
+  echo "$0 <scriptname>"
+  exit 1
+}
+
+if [[ -z $1 ]]; then
+  usage
+fi
+
+if [ ! -e $1 ]; then
+  cat >$1 <<EOF
+#!/usr/bin/env bash
+EOF
+fi
+nvim +MX $1
