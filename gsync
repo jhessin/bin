@@ -1,17 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # First check for non-default branch
 branch=$(git branch --show-current)
 
-# split the branch into different parts
-old_ifs=$IFS
-IFS='/'
-read -ra branch_array <<< $branch
+# echo "starting branch = $branch"
+
+# split the branch into different parts (zsh)
+sep=/
+branch_array=("${(ps.$sep.)branch}")
+
+# split the branch into different parts (bash)
+# old_ifs=$IFS
+# IFS='/'
+# read -ra branch_array <<< $branch
 
 # remove the origin/ part of the branch name
 if [[ "${branch_array[0]}" = *"origin"* ]]; then
   branch=${branch_array[1]}
 fi
+
+# echo "ending branch = $branch"
 
 source functions.sh
 
