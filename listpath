@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+sep=:
+for path in ${(ps.$sep.)PATH}
+  echo $path
