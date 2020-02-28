@@ -25,7 +25,7 @@ fi
 
 # echo "ending branch = $branch"
 
-source functions.sh
+source ~/.functions.sh
 
 #new workflow
 

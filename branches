@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source functions.sh
+source ~/.functions.sh
 
 # RE-ENABLE when pulling
 # gsync
