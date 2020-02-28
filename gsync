@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+autoload colors; colors
+red=$colors[red]
+green=$colors[green]
+
 # First check for non-default branch
 branch=$(git branch --show-current)
 
@@ -32,18 +36,18 @@ git fetch
 if [[ $(git diff HEAD origin/$branch --stat) != '' ]]; then
   downstream=true
 else
-  echo "There are no upstream changes"
+  echo "${green}There are no upstream changes$reset_color"
 fi
 
 # check differences with working tree
 if [[ -n $(git status -s) ]]; then
   upstream=true
 else
-  echo "Tree is clean"
+  echo "${green}Tree is clean$reset_color"
 fi
 
 if [ "$upstream" = true ] && [ "$downstream" = true ]; then
-  echo need to merge different things
+  echo "${red}need to merge different things$reset_color"
   git diff
   # prompt for continue, or cancel
   if confirm "Would you like to commit this" ; then
@@ -60,7 +64,7 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
       git push # Just in case
       exit 0
     else
-      echo Canceling sync
+      echo "${red}Canceling sync$reset_color"
       exit 0
     fi
   fi
@@ -74,7 +78,7 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   echo "PUSHING CHANGES UPSTREAM"
   git push
 elif [ "$upstream" = true ]; then
-  echo Tree is dirty
+  echo "${red}Tree is dirty$reset_color"
   git diff
 
   # prompt for continue, or cancel
@@ -87,17 +91,17 @@ elif [ "$upstream" = true ]; then
     # prompt for a reset and clean
     confirm "Would you like to revert changes"
     if echo "$answer" | grep -iq "^y" ; then
-      echo Cleaning and canceling sync
+      echo "${red}Cleaning and canceling sync$reset_color"
       clean
       exit 0
     else
-      echo Canceling sync
+      echo "${red}Canceling sync$reset_color"
     fi
   fi
   echo "PUSHING CHANGES UPSTREAM"
   git push
 elif [ "$downstream" = true ]; then
-  echo There are upstream changes that need to be pulled downstream
+  echo "${red}There are upstream changes that need to be pulled downstream$reset_color"
   git pull
   git push # Just in case
 fi
