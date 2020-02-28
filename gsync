@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 autoload colors; colors
-red=$colors[red]
-green=$colors[green]
+red=${fg[red]}
+green=${fg[green]}
 
 # First check for non-default branch
 branch=$(git branch --show-current)
