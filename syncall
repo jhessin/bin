@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+autoload colors; colors
 
 function traverse() {
   for dir in $1/*
   do
     if [ -d "${dir}" ] ; then
-      echo "updating $dir"
+      echo "updating ${fg[green]}$dir$reset_color"
       cd "$dir"
       gsync 2> /dev/null
     fi
@@ -12,21 +13,21 @@ function traverse() {
 }
 
 cd ~/.local/bin
-echo "syncing ~/.local/bin"
+echo "syncing ${fg[green]}~/.local/bin$reset_color"
 gsync 2> /dev/null
 
 cd ~
-echo "syncing ~"
+echo "syncing ${fg[green]}$HOME$reset_color"
 gsync 2> /dev/null
 
 cd ~/.config
-echo "syncing ~/.config"
+echo "syncing ${fg[green]}~/.config$reset_color"
 gsync 2> /dev/null
 
-echo "syncing Github repos"
+echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Documents/github
 
-echo "syncing Bitbucket repos"
+echo "syncing ${fg[green]}Bitbucket repos$reset_color"
 traverse ~/Documents/bitbucket
 
 cleanundo
