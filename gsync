@@ -3,6 +3,7 @@
 autoload colors; colors
 red=${fg[red]}
 green=${fg[green]}
+yellow=${fg[yellow]}
 
 # First check for non-default branch
 branch=$(git branch --show-current)
@@ -78,7 +79,7 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   echo "PUSHING CHANGES UPSTREAM"
   git push
 elif [ "$upstream" = true ]; then
-  echo "${red}Tree is dirty$reset_color"
+  echo "${yellow}Tree is dirty$reset_color"
   git diff
 
   # prompt for continue, or cancel
@@ -101,7 +102,7 @@ elif [ "$upstream" = true ]; then
   echo "PUSHING CHANGES UPSTREAM"
   git push
 elif [ "$downstream" = true ]; then
-  echo "${red}There are upstream changes that need to be pulled downstream$reset_color"
+  echo "${yellow}There are upstream changes that need to be pulled downstream$reset_color"
   git pull
   git push # Just in case
 fi
