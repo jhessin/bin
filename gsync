@@ -49,7 +49,7 @@ fi
 
 if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   echo "${red}need to merge different things$reset_color"
-  git diff
+  git diff | nvim -MR +'set ft=git'
   # prompt for continue, or cancel
   if confirm "Would you like to commit this" ; then
     echo commiting changes
@@ -71,7 +71,7 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   fi
 
   # compare with upstream
-  git diff HEAD origin/$branch
+  git diff HEAD origin/$branch | nvim -MR +'set ft=git'
   if confirm "Would you like to merge this" ; then
     echo MERGING CHANGES
     git merge origin/$branch
@@ -80,7 +80,7 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   git push
 elif [ "$upstream" = true ]; then
   echo "${yellow}Tree is dirty$reset_color"
-  git diff
+  git diff | nvim -MR +'set ft=git'
 
   # prompt for continue, or cancel
   if confirm "Would you like to commit this" ; then
