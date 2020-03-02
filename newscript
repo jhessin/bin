@@ -11,7 +11,7 @@ fi
 
 if [ ! -e $1 ]; then
   cat >$1 <<EOF
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 EOF
 fi
 nvim +MX $1

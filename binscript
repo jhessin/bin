@@ -11,7 +11,7 @@ fi
 
 if [ ! -e ~/.local/bin/$1 ]; then
   cat <<EOF >~/.local/bin/$1
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 EOF
 fi
 nvim +MX ~/.local/bin/$1
