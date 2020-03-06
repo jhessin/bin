@@ -7,13 +7,12 @@ if [[ ! -z $1 ]]; then
     # set -x
     mv ~/.aliases ~/.aliases.tmp
     sed -e "s;alias $1=.*;alias $1=\"$rp\";" \
-      -e "s;alias push$1=.*;alias push$1=\"pushd $rp\";" ~/.aliases.tmp > ~/.aliases
+      ~/.aliases.tmp > ~/.aliases
     rm ~/.aliases.tmp
     # set +x
   else
     cat >> ~/.aliases <<EOF
 alias $1="$rp"
-alias push$1="pushd $rp"
 EOF
   fi
 else
