@@ -13,4 +13,4 @@ home = `echo $HOME`
 home = home.strip
 # puts home
 
-puts full_path.gsub(home, '~')
+puts full_path.gsub(home, '$HOME')

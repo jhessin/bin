@@ -18,7 +18,7 @@ EOF
 else
   cat <<EOF > ~/.restorepath
 RP="$rp"
-alias rp="$rp"
+alias rp='source ~/.restorepath && cd \$RP'
 source ~/.aliases
 EOF
 fi
