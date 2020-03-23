@@ -14,4 +14,3 @@ else
   ignoretex
   nvim $1.tex
 fi
-
