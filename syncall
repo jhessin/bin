@@ -23,6 +23,7 @@ gsync 2> /dev/null
 cd ~/.config
 echo "syncing ${fg[green]}~/.config$reset_color"
 gsync 2> /dev/null
+~/.config/nvim/install.sh
 
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Documents/github
