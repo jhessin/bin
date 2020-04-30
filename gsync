@@ -55,19 +55,6 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
     echo commiting changes
     git add -A
     git commit -a
-  else
-    # prompt for a reset and clean
-    confirm "Would you like to revert changes"
-    if echo "$answer" | grep -iq "^y" ; then
-      echo Cleaning and pulling changes
-      clean
-      git pull
-      git push # Just in case
-      exit 0
-    else
-      echo "${red}Canceling sync$reset_color"
-      exit 0
-    fi
   fi
 
   # compare with upstream
@@ -88,16 +75,6 @@ elif [ "$upstream" = true ]; then
     git add -A
     git commit -a
     git push
-  else
-    # prompt for a reset and clean
-    confirm "Would you like to revert changes"
-    if echo "$answer" | grep -iq "^y" ; then
-      echo "${red}Cleaning and canceling sync$reset_color"
-      clean
-      exit 0
-    else
-      echo "${red}Canceling sync$reset_color"
-    fi
   fi
   echo "PUSHING CHANGES UPSTREAM"
   git push
