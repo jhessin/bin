@@ -49,7 +49,8 @@ fi
 
 if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   echo "${red}need to merge different things$reset_color"
-  gdiff
+  # gdiff
+  git status -s
   # prompt for continue, or cancel
   if confirm "Would you like to commit this" ; then
     echo commiting changes
@@ -58,7 +59,8 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   fi
 
   # compare with upstream
-  gdiff HEAD origin/$branch
+  # gdiff HEAD origin/$branch
+  git status -s -- HEAD origin/$branch
   if confirm "Would you like to merge this" ; then
     echo MERGING CHANGES
     git merge origin/$branch
@@ -67,7 +69,8 @@ if [ "$upstream" = true ] && [ "$downstream" = true ]; then
   git push
 elif [ "$upstream" = true ]; then
   echo "${yellow}Tree is dirty$reset_color"
-  gdiff
+  # gdiff
+  git status -s
 
   # prompt for continue, or cancel
   if confirm "Would you like to commit this" ; then
