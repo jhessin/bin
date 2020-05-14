@@ -10,4 +10,4 @@ if [[ -z $1 ]]; then
   usage
 fi
 
-git clone --depth 1 git@github.com:$USER/$1.git ~/Documents/github/$1
+git clone git@github.com:$USER/$1.git ~/Documents/github/$1
