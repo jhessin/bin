@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-server=${1:-'10.0.0.130'}
-echo $server
-tmux new-session -s synergy -d \
-"/Applications/Synergy.app/Contents/MacOS/synergyc -f $server"
