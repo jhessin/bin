@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+server=${1:-'10.0.0.200'}
+echo $server
+
+if [ -d "/Applications/Barrier.app" ]; then
+  tmux new-session -s barrier -d \
+    "/Applications/Barrier.app/Contents/MacOS/barrierc $server"
+else
+  tmux new-session -s barrier -d "barrierc $server"
+fi

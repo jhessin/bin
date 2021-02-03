@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -d "/Applications/Barrier.app" ]; then
+  tmux new-session -s barrier -d \
+  '/Applications/Barrier.app/Contents/MacOS/barriers -f -c ~/.synergy.conf'
+else
+  tmux new-session -s barrier -d 'barriers -f -c ~/.synergy.conf'
+fi

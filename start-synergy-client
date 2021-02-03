@@ -2,5 +2,10 @@
 
 server=${1:-'10.0.0.200'}
 echo $server
-tmux new-session -s synergy -d \
-"synergyc -f $server"
+
+if [ -d "/Applications/Synergy.app" ]; then
+  tmux new-session -s synergy -d \
+    "/Applications/Synergy.app/Contents/MacOS/synergyc $server"
+else
+  tmux new-session -s synergy -d "synergyc $server"
+fi
