@@ -28,7 +28,4 @@ gsync 2> /dev/null
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Documents/github
 
-echo "syncing ${fg[green]}Bitbucket repos$reset_color"
-traverse ~/Documents/bitbucket
-
 cleanundo
