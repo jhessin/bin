@@ -11,3 +11,5 @@ if [[ -z $1 ]]; then
 fi
 
 gh repo clone $USER/$1 ~/Documents/github/$1
+cd ~/Documents/github/$1
+git push -u origin master
