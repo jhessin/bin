@@ -9,9 +9,8 @@ if [[ -z $1 ]]; then
   usage
 fi
 
-cd ~/Documents/Projects
-mkdir $1
-cd $1
+mkdir -p ~/Documents/Projects/$1
+cd ~/Documents/Projects/$1
 git init
 echo "
 # This is my $1 project
