@@ -10,6 +10,7 @@ if [[ -z $1 ]]; then
   usage
 fi
 
+mkdir -p ~/Documents/Projects
 gh repo clone $USER/$1 ~/Documents/Projects/$1
 cd ~/Documents/Projects/$1
 git push -u origin master
