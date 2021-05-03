@@ -26,6 +26,6 @@ gsync 2> /dev/null
 ~/.config/nvim/install.sh
 
 echo "syncing ${fg[green]}Github repos$reset_color"
-traverse ~/Documents/github
+traverse ~/Projects
 
 cleanundo
