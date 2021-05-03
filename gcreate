@@ -9,7 +9,7 @@ if [[ -z $1 ]]; then
   usage
 fi
 
-cd ~/Documents/github
+cd ~/Documents/Projects
 mkdir $1
 cd $1
 git init
