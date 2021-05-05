@@ -1,4 +1,4 @@
 *.AppImage
 powerline*
-zsh
+zsh*
 readline
