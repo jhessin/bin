@@ -1,3 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-pwd | xclip -sel clip
+if [[ $OSTYPE == *darwin* ]]; then
+  echo $(pwd) copied to clipboard using pbcopy
+  pwd | pbcopy
+else
+  echo $(pwd) copied to clipboard using xclip
+  pwd | xclip -sel clip
+fi

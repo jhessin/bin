@@ -1,8 +1,11 @@
 #!/bin/bash
 
 usage () {
-  echo "$0: creates a new github project in ~/Projects"
-  echo "$0 <project_name>"
+  echo "
+  $0: creates a new github project in ~/Projects
+  assumes github username is the same as local username: $USER
+  $0 <project_name>
+  "
   exit 1
 }
 

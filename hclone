@@ -9,5 +9,5 @@ if [[ -z $1 ]]; then
   usage
 fi
 
-cd ~/Documents/github
+cd ~/Projects
 heroku git:clone -a $1

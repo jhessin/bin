@@ -1,7 +1,11 @@
 #!/bin/bash
 
 usage () {
-  echo "$0 <new_repo_name>"
+  echo "
+  Creates a new public repo in $HOME/Projects/ directory
+  assumes gh is logged in.
+  $0 <new_repo_name>
+  "
   exit 1
 }
 
@@ -19,5 +23,5 @@ This is simply a placeholder readme file
 " > README.md
 git add -A
 git commit -m "Initial README"
-hub create
+gh repo create $1 --confirm --public
 git push -u origin master

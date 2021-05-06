@@ -1,3 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-cat ~/.ssh/id_rsa.pub | xclip -sel clip
+if [[ $OSTYPE == *darwin* ]]; then
+  echo copying key using pbcopy
+  cat ~/.ssh/id_rsa.pub | pbcopy
+else
+  echo copying key with xclip
+  cat ~/.ssh/id_rsa.pub | xclip -sel clip
+fi

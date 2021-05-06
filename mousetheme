@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-lxappearance
-find /usr/share/icons/ -name cursors > ~/cursor-themes
-nvim ~/.Xresources ~/.gtkrc-2.0 ~/.config/gtk-3.0/settings.ini ~/cursor-themes
-sudoedit /usr/share/icons/default/index.theme
-# nvim ~/.Xresources

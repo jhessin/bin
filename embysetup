@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -Sy --noconfirm emby-server
-sudo systemctl enable emby-server.service --now
-xdg-open http://localhost:8096

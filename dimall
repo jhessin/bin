@@ -1,7 +1,0 @@
-#!/bin/bash
-
-PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
-
-xrandr --output "$PRIMARY_DISPLAY" --brightness .1
-xrandr --output VGA-0 --brightness .1
-xrandr --output DVI-0 --brightness .1
