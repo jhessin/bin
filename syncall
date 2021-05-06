@@ -7,22 +7,22 @@ function traverse() {
     if [ -d "${dir}" ] ; then
       echo "updating ${fg[green]}$dir$reset_color"
       cd "$dir"
-      zsh $HOME/.local/bin/gsync 2> /dev/null
+      gitsync 2> /dev/null
     fi
   done
 }
 
 cd ~/.local/bin
 echo "syncing ${fg[green]}~/.local/bin$reset_color"
-zsh gsync 2> /dev/null
+gitsync 2> /dev/null
 
 cd ~
 echo "syncing ${fg[green]}$HOME$reset_color"
-zsh $HOME/.local/bin/gsync 2> /dev/null
+gitsync 2> /dev/null
 
 cd ~/.config
 echo "syncing ${fg[green]}~/.config$reset_color"
-zsh $HOME/.local/bin/gsync 2> /dev/null
+gitsync 2> /dev/null
 ~/.config/nvim/install.sh
 
 echo "syncing ${fg[green]}Github repos$reset_color"
