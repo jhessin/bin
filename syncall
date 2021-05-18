@@ -16,16 +16,17 @@ cd ~/.local/bin
 echo "syncing ${fg[green]}~/.local/bin$reset_color"
 gitsync 2> /dev/null
 
-cd ~
-echo "syncing ${fg[green]}$HOME$reset_color"
-gitsync 2> /dev/null
-
 cd ~/.config
 echo "syncing ${fg[green]}~/.config$reset_color"
 gitsync 2> /dev/null
-~/.config/nvim/install.sh
+
+cd ~
+echo "syncing ${fg[green]}$HOME$reset_color"
+gitsync 2> /dev/null
+rld
 
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
 
+~/.config/nvim/install.sh
 cleanundo
