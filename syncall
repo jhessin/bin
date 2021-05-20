@@ -23,7 +23,6 @@ gitsync 2> /dev/null
 cd ~
 echo "syncing ${fg[green]}$HOME$reset_color"
 gitsync 2> /dev/null
-rld
 
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
