@@ -14,4 +14,4 @@ if [ ! -e ~/.local/bin/$1 ]; then
 #!/usr/bin/env zsh
 EOF
 fi
-nvim +"! chmod a+x %" ~/.local/bin/$1
+nvim +"silent ! chmod a+x %" ~/.local/bin/$1
