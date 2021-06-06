@@ -7,29 +7,23 @@ function traverse() {
     if [ -d "${dir}" ] ; then
       echo "reseting ${fg[green]}$dir$reset_color"
       cd "$dir"
-      git reset --hard
-      git clean -f
+      gitreset
     fi
   done
 }
 
 cd ~/.local/bin
 echo "reseting ${fg[green]}~/.local/bin$reset_color"
-git reset --hard
-git clean -f
+gitreset
 
 cd ~
 echo "reseting ${fg[green]}$HOME$reset_color"
-git reset --hard
-git clean -f
+gitreset
 
 cd ~/.config
 echo "reseting ${fg[green]}~/.config$reset_color"
-git reset --hard
-git clean -f
+gitreset
 ~/.config/nvim/install.sh
 
 echo "reseting ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
-
-cleanundo

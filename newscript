@@ -14,4 +14,4 @@ if [ ! -e $1 ]; then
 #!/usr/bin/env zsh
 EOF
 fi
-nvim +MX $1
+nvim +"! chmod a+x %" $1
