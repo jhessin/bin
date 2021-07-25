@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+yarn init
+yarn plugin import @yarnpkg/plugin-typescript
+yarn add typescript
+yarn dlx @yarnpkg/sdks vim
