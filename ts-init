@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+yarn set version berry
 yarn init
 yarn plugin import @yarnpkg/plugin-typescript
 yarn add --dev typescript
