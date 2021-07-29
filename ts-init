@@ -4,4 +4,4 @@ yarn set version berry
 yarn init
 yarn plugin import @yarnpkg/plugin-typescript
 yarn add --dev typescript
-yarn dlx @yarnpkg/sdks vim
+yarn dlx @yarnpkg/sdks vim vscode
