@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
 yarn set version berry
-if [ ! -a "./package.json" ]; then
+if [ ! -f "package.json" ]; then
+	echo "package.json not found... initializing..."
 	yarn init
 fi
 yarn plugin import @yarnpkg/plugin-typescript
