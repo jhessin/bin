@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
 yarn set version berry
-yarn init
+if [ ! -a "./package.json" ]; then
+	yarn init
+fi
 yarn plugin import @yarnpkg/plugin-typescript
 yarn add --dev typescript
 yarn dlx @yarnpkg/sdks vim vscode
