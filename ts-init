@@ -3,7 +3,7 @@
 yarn set version berry
 if [ ! -f "package.json" ]; then
 	echo "package.json not found... initializing..."
-	yarn init
+	npm init -y
 fi
 yarn plugin import @yarnpkg/plugin-typescript
 yarn add --dev typescript
