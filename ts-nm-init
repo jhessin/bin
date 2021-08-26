@@ -7,5 +7,5 @@ if [ ! -f "package.json" ]; then
 fi
 yarn plugin import @yarnpkg/plugin-typescript
 yarn add typescript
+echo "nodeLinker: node-modules" >> .yarnrc.yml
 yarn
-yarn dlx @yarnpkg/sdks vim vscode
