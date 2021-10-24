@@ -5,6 +5,9 @@ usage () {
   $0: creates a new github project in ~/Projects
   assumes github username is the same as local username: $USER
   $0 <project_name>
+
+  or you can specify a username like this:
+  $0 <username> <project_name>
   "
   exit 1
 }
@@ -14,6 +17,11 @@ if [[ -z $1 ]]; then
 fi
 
 mkdir -p ~/Projects
-gh repo clone $USER/$1 ~/Projects/$1
-cd ~/Projects/$1
+if [[ -z $2 ]]; then
+  gh repo clone $USER/$1 ~/Projects/$1 
+  cd ~/Projects/$1
+else
+  gh repo clone $1/$2 ~/Projects/$2
+  cd ~/Projects/$2
+fi
 git push -u origin master
