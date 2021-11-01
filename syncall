@@ -7,22 +7,22 @@ function traverse() {
     if [ -d "${dir}" ] ; then
       echo "updating ${fg[green]}$dir$reset_color"
       cd "$dir"
-      gitsync 2> /dev/null
+      gitui
     fi
   done
 }
 
 cd ~/.local/bin
 echo "syncing ${fg[green]}~/.local/bin$reset_color"
-gitsync 2> /dev/null
+gitui
 
 cd ~/.config
 echo "syncing ${fg[green]}~/.config$reset_color"
-gitsync 2> /dev/null
+gitui
 
 cd ~
 echo "syncing ${fg[green]}$HOME$reset_color"
-gitsync 2> /dev/null
+gitui
 
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
