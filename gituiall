@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+autoload colors; colors
+
+function traverse() {
+  for dir in $1/*
+  do
+    if [ -d "${dir}" ] ; then
+      echo "updating ${fg[green]}$dir$reset_color"
+      cd "$dir"
+      gitui
+    fi
+  done
+}
+
+cd ~/.local/bin
+echo "syncing ${fg[green]}~/.local/bin$reset_color"
+gitui
+
+cd ~/.config
+echo "syncing ${fg[green]}~/.config$reset_color"
+gitui
+
+cd ~
+echo "syncing ${fg[green]}$HOME$reset_color"
+gitui
+
+echo "syncing ${fg[green]}Github repos$reset_color"
+traverse ~/Projects
+
+~/.config/nvim/install.sh
+cleanundo
