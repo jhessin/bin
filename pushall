@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+autoload colors; colors
+
+function traverse() {
+  for dir in $1/*
+  do
+    if [ -d "${dir}" ] ; then
+      echo "pushing ${fg[green]}$dir$reset_color"
+      cd "$dir"
+      git push
+    fi
+  done
+}
+
+cd ~/.local/bin
+echo "pushing ${fg[green]}~/.local/bin$reset_color"
+git push
+
+cd ~/.config
+echo "pushing ${fg[green]}~/.config$reset_color"
+git push
+
+cd ~
+echo "pushing ${fg[green]}$HOME$reset_color"
+git push
+
+echo "pushing ${fg[green]}Github repos$reset_color"
+traverse ~/Projects
+
+~/.config/nvim/install.sh
+cleanundo
