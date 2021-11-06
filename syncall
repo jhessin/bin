@@ -7,7 +7,7 @@ function traverse() {
     if [ -d "${dir}" ] ; then
       cd "$dir"
       echo "updating ${fg[green]}$dir$reset_color"
-      if [[ $(git diff --stat) != '' ]]; then
+      if [[ -n $(git status -s) ]]; then
         gitui
       fi
     fi
@@ -16,19 +16,19 @@ function traverse() {
 
 cd ~/.local/bin
 echo "syncing ${fg[green]}~/.local/bin$reset_color"
-if [[ $(git diff --stat) != '' ]]; then
+if [[ -n $(git status -s) ]]; then
   gitui
 fi
 
 cd ~/.config
-if [[ $(git diff --stat) != '' ]]; then
+if [[ -n $(git status -s) ]]; then
   echo "syncing ${fg[green]}~/.config$reset_color"
   gitui
 fi
 
 cd ~
 echo "syncing ${fg[green]}$HOME$reset_color"
-if [[ $(git diff --stat) != '' ]]; then
+if [[ -n $(git status -s) ]]; then
   gitui
 fi
 
