@@ -1,17 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-usage () {
-  echo "$0 <scriptname>"
-  exit 1
-}
+import os.path
+import sys
+import subprocess
 
-if [[ -z $1 ]]; then
-  usage
-fi
+f_path, f_name = os.path.split(sys.argv[0])
 
-if [ ! -e $1 ]; then
-  cat >$1 <<EOF
-#!/usr/bin/env zsh
-EOF
-fi
-nvim +"silent ! chmod a+x %" $1
+
+def usage():
+    print(f"{f_name} <script-name>")
+    exit(1)
+
+
+if len(sys.argv) < 2:
+    usage()
+
+path = sys.argv[1]
+
+if os.path.isfile(path):
+    subprocess.run(['nvim', path])
+else:
+    template = "#!/usr/bin/env python3"
+    file = open(path, "w")
+    file.write(template)
+    file.close()
+    subprocess.run(["chmod", "a+x", path])
+    subprocess.run(["nvim", path])
