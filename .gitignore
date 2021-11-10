@@ -4,3 +4,7 @@ zsh*
 readline
 vit
 alacritty-colorscheme
+__pycache__
+pip
+pip3
+pip3.8

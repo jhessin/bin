@@ -5,24 +5,32 @@ function traverse() {
   for dir in $1/*
   do
     if [ -d "${dir}" ] ; then
-      echo "updating ${fg[green]}$dir$reset_color"
       cd "$dir"
-      gitsync 2> /dev/null
+      echo "updating ${fg[green]}$dir$reset_color"
+      if [[ -n $(git status -s) ]]; then
+        gitui
+      fi
     fi
   done
 }
 
 cd ~/.local/bin
 echo "syncing ${fg[green]}~/.local/bin$reset_color"
-gitsync 2> /dev/null
+if [[ -n $(git status -s) ]]; then
+  gitui
+fi
 
 cd ~/.config
-echo "syncing ${fg[green]}~/.config$reset_color"
-gitsync 2> /dev/null
+if [[ -n $(git status -s) ]]; then
+  echo "syncing ${fg[green]}~/.config$reset_color"
+  gitui
+fi
 
 cd ~
 echo "syncing ${fg[green]}$HOME$reset_color"
-gitsync 2> /dev/null
+if [[ -n $(git status -s) ]]; then
+  gitui
+fi
 
 echo "syncing ${fg[green]}Github repos$reset_color"
 traverse ~/Projects

@@ -1,39 +1,40 @@
-#!/usr/bin/env zsh
-autoload colors; colors
+#!/usr/bin/env pipenv-shebang
+import subprocess
+import os
+import common
+from yachalk import chalk
 
-function traverse() {
-  for dir in $1/*
-  do
-    if [ -d "${dir}" ] ; then
-      cd "$dir"
-      echo "updating ${fg[green]}$dir$reset_color"
-      if [[ -n $(git status -s) ]]; then
-        gitui
-      fi
-    fi
-  done
-}
 
-cd ~/.local/bin
-echo "syncing ${fg[green]}~/.local/bin$reset_color"
-if [[ -n $(git status -s) ]]; then
-  gitui
-fi
+def traverse(path):
+    print(f"traversing {chalk.green(path)}")
+    for directory in os.listdir(path):
+        full_path = path + '/' + directory
+        if os.path.isdir(full_path):
+            os.chdir(full_path)
+            print(f"updating {chalk.green(full_path)}")
+            result = subprocess.run(['git', 'status', '-s'],
+                                    capture_output=True)
+            if len(result.stdout) != 0:
+                subprocess.run(['gitui'])
 
-cd ~/.config
-if [[ -n $(git status -s) ]]; then
-  echo "syncing ${fg[green]}~/.config$reset_color"
-  gitui
-fi
 
-cd ~
-echo "syncing ${fg[green]}$HOME$reset_color"
-if [[ -n $(git status -s) ]]; then
-  gitui
-fi
+def sync(path):
+    os.chdir(path)
+    print(f"updating {chalk.green(path)}")
+    result = subprocess.run(['git', 'status', '-s'],
+                            capture_output=True)
+    if len(result.stdout) != 0:
+        subprocess.run(['gitui'])
 
-echo "syncing ${fg[green]}Github repos$reset_color"
-traverse ~/Projects
 
-~/.config/nvim/install.sh
-cleanundo
+sync(common.home + '/.local/bin')
+
+sync(common.home + '/.config')
+
+sync(common.home)
+
+print(f"updating {chalk.green('Github repos')}")
+traverse(common.home + '/Projects')
+
+common.nvim_install()
+common.clean_undo()

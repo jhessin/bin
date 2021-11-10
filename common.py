@@ -36,3 +36,7 @@ def new_script(path):
 
 def clean_undo():
     subprocess.run(['rm', '-rf', '~/.tmp/undo'])
+
+def nvim_install():
+    subprocess.run(['nvim', '+CocInstall', '+PlugClean!', '+PlugInstall',
+        '+UpdaUpdateRemotePlugins', '+qall'])
