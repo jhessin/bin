@@ -32,3 +32,7 @@ def new_script(path):
         file.close()
         subprocess.run(["chmod", "a+x", path])
         subprocess.run(["nvim", path])
+
+
+def clean_undo():
+    subprocess.run(['rm', '-rf', '~/.tmp/undo'])

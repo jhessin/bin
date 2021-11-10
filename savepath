@@ -2,7 +2,7 @@
 
 rp=$(rwd)
 
-if [[ ! -z $1 ]]; then
+if [[ -n $1 ]]; then
   if grep "alias $1=" ~/.aliases > /dev/null; then
     # set -x
     mv ~/.aliases ~/.aliases.tmp
