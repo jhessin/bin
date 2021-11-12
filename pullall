@@ -28,4 +28,3 @@ echo "pulling ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
 
 ~/.config/nvim/install.sh
-cleanundo

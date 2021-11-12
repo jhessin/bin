@@ -26,6 +26,3 @@ git push
 
 echo "pushing ${fg[green]}Github repos$reset_color"
 traverse ~/Projects
-
-~/.config/nvim/install.sh
-cleanundo
