@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rp=$(rwd)
+rp=$(pwd)
 
 if [[ -n $1 ]]; then
   if grep "alias $1=" ~/.aliases > /dev/null; then
