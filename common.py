@@ -5,7 +5,7 @@ import subprocess
 f_path, f_name = os.path.split(sys.argv[0])
 home = os.environ.get('HOME')
 
-template = """#!/usr/bin/env pipenv-shebang
+template = """#!/usr/bin/env python3
 import os.path
 import sys
 import subprocess
