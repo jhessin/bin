@@ -1,11 +1,12 @@
-import os.path
+""" Common functions and variables for use in other scripts """
+import os
 import sys
 import subprocess
 
 f_path, f_name = os.path.split(sys.argv[0])
 home = os.environ.get('HOME')
 
-template = """#!/usr/bin/env python3
+TEMPLATE = """#!/usr/bin/env python3
 import os.path
 import sys
 import subprocess
@@ -24,19 +25,25 @@ if len(sys.argv) < 2:
 
 
 def new_script(path):
+    """ Generate a new script in the given path """
     if os.path.isfile(path):
-        subprocess.run(["nvim", path])
+        subprocess.run(["nvim", path], check=True)
     else:
-        file = open(path, "w")
-        file.write(template)
-        file.close()
-        subprocess.run(["chmod", "a+x", path])
-        subprocess.run(["nvim", path])
+        with open(path, 'w', encoding='utf-8') as file:
+            file.write(TEMPLATE)
+        subprocess.run(["chmod", "a+x", path], check=True)
+        subprocess.run(["nvim", path], check=True)
 
 
 def clean_undo():
-    subprocess.run(['rm', '-rf', '~/.tmp/undo'])
+    """ Clean neovim's undo files """
+    subprocess.run(['rm', '-rf', '~/.tmp/undo'], check=True)
+
 
 def nvim_install():
-    subprocess.run(['nvim', '+CocInstall', '+PlugClean!', '+PlugInstall',
-        '+UpdaUpdateRemotePlugins', '+qall'])
+    """ Install neovim plugins """
+    subprocess.run([
+        'nvim', '+CocInstall', '+PlugClean!', '+PlugInstall',
+        '+UpdaUpdateRemotePlugins', '+qall'
+    ],
+                   check=True)

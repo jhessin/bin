@@ -1,11 +1,15 @@
-#!/usr/bin/env python3
-import subprocess
+#!./bin/python
+""" Sync all system repos using gitui """
 import os
-import common
+import subprocess
+
 from yachalk import chalk
+
+import common
 
 
 def traverse(path):
+    """ Traverse through all the subdirectories in a path """
     print(f"traversing {chalk.green(path)}")
     for directory in os.listdir(path):
         full_path = path + '/' + directory
@@ -13,28 +17,33 @@ def traverse(path):
             os.chdir(full_path)
             print(f"updating {chalk.green(full_path)}")
             result = subprocess.run(['git', 'status', '-s'],
-                                    capture_output=True)
+                                    capture_output=True,
+                                    check=True)
             if len(result.stdout) != 0:
-                subprocess.run(['gitui'])
+                subprocess.run(['gitui'], check=True)
 
 
-def sync(path):
+def sync(path: str):
+    """ Sync this path """
     os.chdir(path)
     print(f"updating {chalk.green(path)}")
     result = subprocess.run(['git', 'status', '-s'],
-                            capture_output=True)
+                            capture_output=True,
+                            check=True)
     if len(result.stdout) != 0:
-        subprocess.run(['gitui'])
+        subprocess.run(['gitui'], check=True)
 
 
-sync(common.home + '/.local/bin')
+home = common.home or "/home/jhessin"
 
-sync(common.home + '/.config')
+sync(home + '/.local/bin')
 
-sync(common.home)
+sync(home + '/.config')
+
+sync(home)
 
 print(f"updating {chalk.green('Github repos')}")
-traverse(common.home + '/Projects')
+traverse(home + '/Projects')
 
 common.nvim_install()
 common.clean_undo()

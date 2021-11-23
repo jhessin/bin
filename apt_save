@@ -1,0 +1,33 @@
+#!./bin/python
+""" Allows a user to save a package from the apt repository to be installed
+again later """
+from os import chdir
+import os.path
+import subprocess
+import sys
+
+from common import home
+
+f_path, f_name = os.path.split(sys.argv[0])
+
+
+def usage():
+    """ Print the usage """
+    print(f"{f_name} <Program to add>")
+    sys.exit(1)
+
+
+if len(sys.argv) < 2:
+    usage()
+
+setup_path = os.path.join(home, 'Projects', 'pop-setup')  # type: ignore
+
+if not os.path.isdir(setup_path):
+    subprocess.run(['gclone', 'pop-setup'], check=True)
+
+chdir(setup_path)
+
+subprocess.run(['sudo', 'apt', 'install', ' '.join(sys.argv[1:])], check=True)
+
+for app in sys.argv[1:]:
+    subprocess.run(['echo', app, '>>', 'apt.packages'], shell=True, check=True)

@@ -1,24 +1,23 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
-import dbus
 import sys
 import subprocess
+import dbus
 
-subprocess.Popen(['ofono-phonesim', '-p', '12345',
-    '/usr/share/phonesim/default.xml'])
+with subprocess.Popen(
+    ['ofono-phonesim', '-p', '12345', '/usr/share/phonesim/default.xml']):
+    bus = dbus.SystemBus()
 
-bus = dbus.SystemBus()
+    if len(sys.argv) == 2:
+        path = sys.argv[1]
+    else:
+        manager = dbus.Interface(bus.get_object('org.ofono', '/'),
+                                 'org.ofono.Manager')
+        modems = manager.GetModems()
+        path = modems[0][0]
 
-if len(sys.argv) == 2:
-	path = sys.argv[1]
-else:
-	manager = dbus.Interface(bus.get_object('org.ofono', '/'),
-			'org.ofono.Manager')
-	modems = manager.GetModems()
-	path = modems[0][0]
+    print("Connecting modem %s...".format(path))
+    modem = dbus.Interface(bus.get_object('org.ofono', path),
+                           'org.ofono.Modem')
 
-print("Connecting modem %s..." % path)
-modem = dbus.Interface(bus.get_object('org.ofono', path),
-						'org.ofono.Modem')
-
-modem.SetProperty("Powered", dbus.Boolean(1), timeout = 120)
+    modem.SetProperty("Powered", dbus.Boolean(1), timeout=120)

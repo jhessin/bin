@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!./bin/python
 from os import chdir
 import os.path
 import sys
@@ -7,22 +7,23 @@ from common import home
 
 f_path, f_name = os.path.split(sys.argv[0])
 
+
 def usage():
     print(f"{f_name} <Program to add>")
-    exit(1)
+    sys.exit(1)
 
 
 if len(sys.argv) < 2:
     usage()
 
-setup_path = os.path.join(home, 'Projects', 'pop-setup')
+setup_path = os.path.join(home, 'Projects', 'pop-setup')  # type: ignore
 
 if not os.path.isdir(setup_path):
-    subprocess.run(['gclone', 'pop-setup'])
+    subprocess.run(['gclone', 'pop-setup'], check=True)
 
 chdir(setup_path)
 
-for app in sys.argv[1:]:
-    subprocess.run(['echo', app, '>>', 'pip.packages'], shell=True)
+subprocess.run(['pip', 'install', ' '.join(sys.argv[1:])], check=True)
 
-subprocess.run(['pip', 'install', ' '.join(sys.argv[1:])])
+for app in sys.argv[1:]:
+    subprocess.run(['echo', app, '>>', 'pip.packages'], shell=True, check=True)
