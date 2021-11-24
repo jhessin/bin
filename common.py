@@ -4,7 +4,7 @@ import sys
 import subprocess
 
 f_path, f_name = os.path.split(sys.argv[0])
-home = os.environ.get('HOME')
+home = os.environ.get('HOME') or os.path.join('/home', 'jhessin')
 
 TEMPLATE = """#!/usr/bin/env python3
 import os.path

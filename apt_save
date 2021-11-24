@@ -20,7 +20,7 @@ def usage():
 if len(sys.argv) < 2:
     usage()
 
-setup_path = os.path.join(home, 'Projects', 'pop-setup')  # type: ignore
+setup_path = os.path.join(home, 'Projects', 'pop-setup')
 
 if not os.path.isdir(setup_path):
     subprocess.run(['gclone', 'pop-setup'], check=True)
