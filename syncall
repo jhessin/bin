@@ -5,7 +5,7 @@ import subprocess
 
 from yachalk import chalk
 
-import common
+import Common
 
 
 def traverse(path):
@@ -34,7 +34,7 @@ def sync(path: str):
         subprocess.run(['gitui'], check=True)
 
 
-home = common.home or "/home/jhessin"
+home = Common.home or "/home/jhessin"
 
 sync(home + '/.local/bin')
 
@@ -45,5 +45,5 @@ sync(home)
 print(f"updating {chalk.green('Github repos')}")
 traverse(home + '/Projects')
 
-common.nvim_install()
-common.clean_undo()
+Common.nvim_install()
+Common.clean_undo()

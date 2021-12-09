@@ -6,7 +6,7 @@ import os.path
 import subprocess
 import sys
 
-from common import home
+from Common import home
 
 f_path, f_name = os.path.split(sys.argv[0])
 

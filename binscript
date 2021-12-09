@@ -2,18 +2,18 @@
 """ Creates a new python script in the bin folder """
 
 import sys
-import common
+import Common
 
 
 def usage():
     """ Print the intended usage """
-    print(f"{common.f_name} <script-name>")
+    print(f"{Common.f_name} <script-name>")
     sys.exit(1)
 
 
 if len(sys.argv) < 2:
     usage()
 
-path = f"{common.home}/.local/bin/{sys.argv[1]}"
+path = f"{Common.home}/.local/bin/{sys.argv[1]}"
 
-common.new_script(path)
+Common.new_script(path)
