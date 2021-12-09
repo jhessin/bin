@@ -1,4 +1,4 @@
-#!./bin/python
+#!/usr/bin/env python3
 """ Allows a user to save a package from the apt repository to be installed
 again later """
 from os import chdir

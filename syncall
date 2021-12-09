@@ -1,4 +1,4 @@
-#!./bin/python
+#!/usr/bin/env python3
 """ Sync all system repos using gitui """
 import os
 import subprocess
